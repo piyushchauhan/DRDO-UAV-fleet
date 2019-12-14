@@ -22,4 +22,4 @@ sudo modprobe batman-adv
 sudo batctl if add wlan0
 sudo ip link set up dev wlan0
 sudo ip link set up dev bat0
-sudo ifconfig bat0 172.27.0.1/16              ## ip adrress to be changed ##
+sudo ifconfig bat0 172.27.2.1/16              ## ip adrress to be changed ##
