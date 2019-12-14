@@ -43,7 +43,7 @@ echo $PATH
 PATH=$PATH:/bin:/sbin:/usr/bin:/usr/local/bin
 export PATH
 cd /home/pi
-screen -d -m -s /bin/bash mavproxy.py --master=/dev/ttyAMA0 --baudrate 57600 --aircraft MyCopter  ##(TO BE CHANGED ACCORDINGLY)
+screen -d -m -s /bin/bash mavproxy.py --master=/dev/ttyAMA0 --baudrate 921600 --aircraft MyCopter  ##(TO BE CHANGED ACCORDINGLY)
 ) > /tmp/rc.log 2>&1
 
 
