@@ -1,0 +1,52 @@
+sudo apt-get update
+sudo apt-get install screen python-wxgtk3.0 python-matplotlib python-opencv python-pip python-numpy python-dev libxml2-dev libxslt-dev python-lxml
+sudo pip install future
+sudo pip install pymavlink
+sudo pip install mavproxy
+
+
+<< sudo raspi-config >---> Interfacing options >---> disable the serial login shell and keep serial interface enabled ---<
+
+
+sudo nano /boot/config.txt  ---> (AT THE END ADD):
+enable_uart=1
+dtoverlay=pi3-disable-bt
+
+
+sudo nano /boot/cmdline.txt  ---> (CHANGE TO):
+dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles
+
+
+sudo chown -R pi /home/pi
+
+
+TO RUN MAVPROXY:
+sudo -s
+mavproxy.py --master=/dev/ttyAMA0 --baudrate 921600 --aircraft MyCopter
+
+
+
+<--SETUP FOR PIXHAWK-->
+1. Connect to QGCS
+2. Set MAV_0_CCONFIG to TELEM2
+3. Connect according to : https://www.google.com/search?q=rpi+to+pixhawk&rlz=1C1CHBD_enIN877IN877&sxsrf=ACYBGNQPScAzSaGFUQK8RcyHoO5rNyrLiw:1576280774421&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiprIC957PmAhXKR30KHYs-Cc0Q_AUoAXoECBcQAw&biw=1536&bih=754#imgrc=inCTv6B-L--XXM:
+4. Don't connect +5V wire
+
+
+
+TO RUN MAVPROXY IN BACKGROUND AT BOOT:
+sudo nano /etc/rc.local ---> (ADD JUST BEFORE exit 0):
+
+(
+date
+echo $PATH
+PATH=$PATH:/bin:/sbin:/usr/bin:/usr/local/bin
+export PATH
+cd /home/pi
+screen -d -m -s /bin/bash mavproxy.py --master=/dev/ttyAMA0 --baudrate 57600 --aircraft MyCopter  ##(TO BE CHANGED ACCORDINGLY)
+) > /tmp/rc.log 2>&1
+
+
+
+If you wish to connect to the MAVProxy application that has been automatically started you can log into the RPi and type:
+sudo screen -x
