@@ -1,4 +1,4 @@
-## initial setup ##
+## initial setup-prerequisites ##
 
 sudo apt install libnl-3-dev libnl-genl-3-dev
 sudo apt-get install git
@@ -7,10 +7,11 @@ cd batctl
 sudo make install
 sudo apt-get install alfred
 
-## procedure ##
+## procedure to setup ##
 
-sudo bash service wpa_supplicant stop sudo systemctl mask wpa_supplicant.service sudo update-rc.d dhcpcd disable
-
+sudo bash service wpa_supplicant stop
+sudo systemctl mask wpa_supplicant.service
+sudo update-rc.d dhcpcd disable
 sudo ip link set wlan0 down
 sudo systemctl stop dhcpcd
 sudo iw wlan0 set type ibss
