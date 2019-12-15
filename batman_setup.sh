@@ -12,8 +12,6 @@ sudo apt-get install alfred
 sudo bash service wpa_supplicant stop
 sudo systemctl mask wpa_supplicant.service
 sudo update-rc.d dhcpcd disable
-
-
 sudo ip link set wlan0 down
 sudo systemctl stop dhcpcd
 sudo iw wlan0 set type ibss
@@ -27,7 +25,15 @@ sudo ip link set up dev wlan0
 sudo ip link set up dev bat0
 sudo ifconfig bat0 172.27.2.1/16              ## ip adrress to be changed ##
 
-for ubuntu
+
+## To make a script On Raspberry Pi ##
+nano batctl.sh                                ##create a file with .sh extension
+paste the above given lines in script
+sudo chmod +x batctl.sh
+./batctl.sh                                    ##to run the script
+
+
+##for ubuntu
 sudo ip link set wlp2s0 down
 sudo dhcpcd -x
 sudo iw wlp2s0 set type ibss
