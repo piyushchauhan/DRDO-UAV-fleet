@@ -12,6 +12,8 @@ sudo apt-get install alfred
 sudo bash service wpa_supplicant stop
 sudo systemctl mask wpa_supplicant.service
 sudo update-rc.d dhcpcd disable
+
+
 sudo ip link set wlan0 down
 sudo systemctl stop dhcpcd
 sudo iw wlan0 set type ibss
