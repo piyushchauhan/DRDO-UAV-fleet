@@ -18,7 +18,7 @@ sudo iw wlan0 set type ibss
 sudo ifconfig wlan0 mtu 1500
 sudo iwconfig wlan0 channel 3
 sudo ip link set wlan0 up
-sudo iw wlan0 ibss join <ssid> 2432           ## <ssid> = my-mesh-network
+sudo iw wlan0 ibss join drdo 2432           
 sudo modprobe batman-adv
 sudo batctl if add wlan0
 sudo ip link set up dev wlan0
