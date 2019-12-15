@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 import time
 
-def on_msg(client,username,data)
+def on_msg(client,username,data):
   print("Msg:",str(msg.payload.decode("utf-8")))
   
  client = mqtt.Client("P1")
