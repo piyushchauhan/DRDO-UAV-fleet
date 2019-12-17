@@ -35,12 +35,12 @@ sudo chmod +x batctl.sh
 
 ##for ubuntu
 sudo ip link set wlp2s0 down
-sudo dhcpcd -x
+sudo systemctl stop dhcpcd
 sudo iw wlp2s0 set type ibss
 sudo ifconfig wlp2s0 mtu 1500
 sudo iwconfig wlp2s0 channel 3
 sudo ip link set wlp2s0 up
-sudo iw wlp2s0 ibss join drdo 2432           ## <ssid> = my-mesh-network
+sudo iw wlp2s0 ibss join drdo 2432           
 sudo modprobe batman-adv
 sudo batctl if add wlp2s0
 sudo ip link set up dev wlp2s0
