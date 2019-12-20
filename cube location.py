@@ -4,7 +4,7 @@ import math
 def  cubeLoc(alpha,beta,head,h,theta_c,theta_p,lat,lon):
     
     x_dash = (alpha*h*math.tan(math.pi*25/180))/640
-    y_dash = h*( 1/math.tan((theta_c+theta_p)*math.pi/180) - beta*(1/math.tan((theta_p+theta_c)*math.pi/180) - 1/math.tan((theta_c+theta_p+15)*math.pi/180))/360)
+    y_dash = h*( 1/math.tan((theta_c+theta_p)) - beta*(1/math.tan((theta_p+theta_c)) - 1/math.tan((theta_c+theta_p+15)))/360)
 
     #After considering axis of rotation
     x = x_dash*math.cos(head) - y_dash*math.sin(head)
